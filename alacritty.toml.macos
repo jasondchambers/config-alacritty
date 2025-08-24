@@ -19,7 +19,7 @@ size = 15
 [window]
 padding.x = 14
 padding.y = 14
-opacity = 0.8
+#opacity = 0.8
 blur = true
 decorations = "Buttonless"
 dimensions = { columns = 120, lines = 40 }
