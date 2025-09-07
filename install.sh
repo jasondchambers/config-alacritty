@@ -37,6 +37,15 @@ main() {
         echo "Installing for Omarchy"
         point_alacritty_to_this_config alacritty.toml.omarchy
       fi
+    elif [ -f /etc/os-release ]; then 
+      ID=$(awk -F= '/^ID=/{gsub(/"/, "", $2); print $2}' /etc/os-release) 
+      echo "$ID"
+      if [ "$ID" = "linuxmint" ]; then 
+        echo "Installing for Linux Mint" 
+        point_alacritty_to_this_config alacritty.toml.linuxmint
+      else 
+        echo "Unsupported OS"
+      fi
     else
       echo "Installing for macOS"
       point_alacritty_to_this_config alacritty.toml.macos
