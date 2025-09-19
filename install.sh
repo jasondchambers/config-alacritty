@@ -9,7 +9,7 @@ point_alacritty_to_this_config() {
     echo "Alacritty config already set - verifying it points to this config"
     local actual_resolved_path
     actual_resolved_path=$(readlink -f ~/.config/alacritty)
-    if [ "$actual_resolved_path" = "$(pwd)" ]; then
+    if [ "$actual_resolved_path" = "$(pwd)" ] || [ "$actual_resolved_path" = "${HOME}/Dropbox/synced_repos/config-alacritty" ]; then
       echo "Alacritty is already pointing to this config"
     else
       echo "Alacritty is pointing to another config: ${actual_resolved_path}"
@@ -37,13 +37,13 @@ main() {
         echo "Installing for Omarchy"
         point_alacritty_to_this_config alacritty.toml.omarchy
       fi
-    elif [ -f /etc/os-release ]; then 
-      ID=$(awk -F= '/^ID=/{gsub(/"/, "", $2); print $2}' /etc/os-release) 
+    elif [ -f /etc/os-release ]; then
+      ID=$(awk -F= '/^ID=/{gsub(/"/, "", $2); print $2}' /etc/os-release)
       echo "$ID"
-      if [ "$ID" = "linuxmint" ]; then 
-        echo "Installing for Linux Mint" 
+      if [ "$ID" = "linuxmint" ]; then
+        echo "Installing for Linux Mint"
         point_alacritty_to_this_config alacritty.toml.linuxmint
-      else 
+      else
         echo "Unsupported OS"
       fi
     else
