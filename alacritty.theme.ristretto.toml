@@ -25,7 +25,7 @@ cursor = '#c3b7b8'
 text = '#c3b7b8'
 
 [colors.primary]
-background = '#2c2525'
+background = '#4c4545'
 foreground = '#e6d9db'
 
 [colors.selection]
